@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import AddWidgCard from "../Layouts/AddWidgCard";
 import Button from "../Buttons/Button";
 
 export default function AddCounter() {
