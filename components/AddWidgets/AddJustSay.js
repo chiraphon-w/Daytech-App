@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import AddWidgCard from "../Layouts/AddWidgCard";
 import Button from "../Buttons/Button";
 
 export default function AddJustSay({
-  setTitle1,
-  handleCancels,
+  setJustSay,
+  handleCancel,
   setListAllWidgets,
   listAllWidgets,
+  realTime,
 }) {
   const [inputText, setInputText] = useState("");
   const [checkError, setCheckError] = useState("");
@@ -18,23 +18,23 @@ export default function AddJustSay({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // onSearch(inputText);
-    setTitle1(e.target.title.value);
-    handleCancels();
+    setJustSay(e.target.title.value);
+
+    handleCancel();
+    // handleClickAdd();
     // handleJustsay();
     let id;
 
     if (listAllWidgets.length == 0) {
       id = 1;
     } else {
-        const lastArray = listAllWidgets.slice(-1).pop(); // .pop เลือก array ตัวสุดท้ายมาให้
-        console.log(lastArray, "zzz");
-        id = lastArray.id + 1 ;
+      const lastArray = listAllWidgets.slice(-1).pop(); // .slice(-1).pop() เลือก array ตัวสุดท้ายมาให้
+      id = lastArray.id + 1;
     }
     const data = {
       value: e.target.title.value,
       id: id,
-      date: "19/04/2021",
+      date: realTime,
     };
     setListAllWidgets([...listAllWidgets, data]);
   };
